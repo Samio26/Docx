@@ -10,7 +10,11 @@ void joinRoom(String docId){
   _socketclient.emit("join",docId);
 }
 void getContentTyping( Map<dynamic,String> data){
-_socketclient.emit("writing",data);
-  
+  _socketclient.emit("writing",data);
 }
+
+void listener(Function func){
+  _socketclient.on("changes", (data) => func(data));
+}
+
 }
